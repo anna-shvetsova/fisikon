@@ -43,7 +43,7 @@ class AnimatedObject {
                 });
 
                 this.springNode.setAttributeNS(null, 'points', curSpringObj.points);
-                this.weightNode.setAttributeNS(null, 'cy', endHeight * 2 + turns * curSpringObj.height + parseInt(weightNode.getAttributeNS(null, 'r')));
+                this.weightNode.setAttributeNS(null, 'cy', curSpringObj.length + parseInt(weightNode.getAttributeNS(null, 'r')));
                 window.requestAnimationFrame(animateStep);
             };
         };
@@ -64,9 +64,7 @@ class AnimatedObject {
             const curTime = timestamp - this.startTime;
             const { turns, wingLength, height, endHeight, frameWidth, koeff } = this.springObj;
             const { mass } = this.weightObj;
-            // const w = Math.sqrt(koeff / mass);
             const w = omega(koeff, mass);
-
             const curY = this.startY * Math.cos(curTime / 1000 * w);
             this.curY = curY;
             this.time = curTime / 1000;
@@ -80,16 +78,16 @@ class AnimatedObject {
             });
 
             this.springNode.setAttributeNS(null, 'points', curSpringObj.points);
-            this.weightNode.setAttributeNS(null, 'cy', endHeight * 2 + turns * curSpringObj.height + parseInt(weightNode.getAttributeNS(null, 'r')));
+            this.weightNode.setAttributeNS(null, 'cy', curSpringObj.length + parseInt(weightNode.getAttributeNS(null, 'r')));
             window.requestAnimationFrame(animateStep);
         };
 
         window.requestAnimationFrame(animateStep);
     }
     cancel() {
-        const { endHeight, turns, height, points } = this.springObj;
+        const { length, points } = this.springObj;
         this.springNode.setAttributeNS(null, 'points', points);
-        this.weightNode.setAttributeNS(null, 'cy', endHeight * 2 + turns * height + parseInt(this.weightNode.getAttributeNS(null, 'r')));
+        this.weightNode.setAttributeNS(null, 'cy', length + parseInt(this.weightNode.getAttributeNS(null, 'r')));
         this.isDone = true;
     }
 };
