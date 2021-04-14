@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="wrapper">
+        <h1>Незатухающие колебания пружинного маятника</h1>
+        <div id="content">
+            <div class="column1">
+                <div id="visualization" class="section">
+                    <button id="start-button">Старт</button>
+                    <div id="spring-container"></div>
+                </div>
+            </div>
+            <div class="column2">
+                <div id="parameters" class="section">
+                    <h2>Параметры</h2>
+                    <div class="param">
+                        <label for="fkoeff">Жесткость пружины (k):</label>
+                        <input id="fkoeff" name="fkoeff">
+                        <span id="fkoeffHelper"></span>        
+                    </div>
+                    <div class="param">
+                        <label for="fmass">Масса груза, кг (m):</label>
+                        <input id="fmass" name="fmass">
+                        <span id="fmassHelper"></span>
+                    </div>
+                    <div class="param">
+                        <label for="fdecl">Начальное отклонение, см (x<sub>0</sub>):</label>
+                        <input id="fdecl" name="fdecl">
+                        <span id="fdeclHelper"></span>
+                    </div>
+                </div>
+                <div id="watch" class="section">
+                    <h2>Характеристики</h2>
+                    <p>Циклическая частота собственных колебаний, рад/с (&omega;<sub>0</sub>): <span id='out-w0'></span></p>
+                    <p>Время, с (t): <span id='out-t'></span></p>
+                    <p>Количество полных колебаний: <span id='out-periods'></span></p>
+                    <p>Текущая координата, см (x): <span id='out-y'></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="classes.js"></script>
+    <script src="script.js"></script>
+</body>
